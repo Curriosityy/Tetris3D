@@ -33,7 +33,8 @@ public class TetrionInitializer : MonoBehaviour
     {
         if (localPosition.Length!= partsSize)
         {
-            Debug.LogError("wrong number of localPosition:Initialize:TetrionInitialized");
+            Debug.LogError("wrong number of localPosition-Initialize-TetrionInitializer");
+
             return;
         }
         isInitialized = true; 
