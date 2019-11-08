@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class TetrionInitializer : MonoBehaviour
 {
-
-    [SerializeField] GameObject cube;
-    [SerializeField] int partsSize=4;
-    GameObject[] parts;
+    [SerializeField] GameObject[] parts;
     bool isInitialized = false;
 
     public bool IsInitialized
@@ -20,27 +17,26 @@ public class TetrionInitializer : MonoBehaviour
 
     private void Awake()
     {
-        parts = new GameObject[partsSize];
     }
     void Start()
     {
-        for (int i = 0; i < partsSize; i++)
-        {
-            parts[i] = Instantiate(cube, Vector3.zero, Quaternion.identity, transform);
-        }
+       
     }
+
     public void Initialize(Vector3[] localPosition)
     {
-        if (localPosition.Length!= partsSize)
+
+        if (localPosition.Length!= parts.Length)
         {
             Debug.LogError("wrong number of localPosition-Initialize-TetrionInitializer");
 
             return;
         }
-        isInitialized = true; 
-        for(int i=0;i<partsSize; i++)
+        isInitialized = true;
+        for (int i=0;i< parts.Length; i++)
         {
             parts[i].transform.position = localPosition[i];
+            parts[i].SetActive(true);
         }
         gameObject.SetActive(true);
     }

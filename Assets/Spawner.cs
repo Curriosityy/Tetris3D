@@ -23,9 +23,12 @@ public class Spawner : MonoBehaviour
         tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(1, 0, 1) }));
     }
 
-    // Update is called once per frame
-    void Update()
+    public TetrionInitializer SpawnPawn()
     {
-        
+        TetrionInitializer pawn = pool.GetFromPool();
+        pawn.Initialize(tetriminos[Random.Range(0, tetriminos.Count)].Pos);
+        pawn.transform.position = transform.position;
+        return pawn;
     }
+
 }
