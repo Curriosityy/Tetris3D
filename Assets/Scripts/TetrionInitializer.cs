@@ -53,5 +53,6 @@ public class TetrionInitializer : MonoBehaviour
     void OnDisable()
     {
         isInitialized = false;
+        PawnPooler.Instance.AddToPool(this);
     }
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PawnPooler : MonoBehaviour
 {
-    private static PawnPooler instance;
+    static PawnPooler instance;
     [SerializeField] TetrionInitializer pawn;
     Queue<TetrionInitializer> pool;
+
     [SerializeField] int initialPoolSize=10;
     Transform tetrisHolder;
 
@@ -16,10 +17,10 @@ public class PawnPooler : MonoBehaviour
         {
             if(instance==null)
             {
-                var singletonObject = new GameObject();
-                instance = singletonObject.AddComponent<PawnPooler>();
+                GameObject singletonObject = new GameObject();
+                instance = singletonObject.AddComponent<PawnPooler>() as PawnPooler;
                 singletonObject.name = typeof(PawnPooler).ToString() + " (Singleton)";
-                DontDestroyOnLoad(singletonObject);
+                instance.pawn = Resources.Load<TetrionInitializer>("Prefabs/TetrisPawn");
             }
             return instance;
         }
@@ -28,11 +29,12 @@ public class PawnPooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance!=null)
+        if(instance!=null && instance!=this)
         {
             Destroy(gameObject);
             return;
         }
+        DontDestroyOnLoad(this);
         instance = this;
         pool = new Queue<TetrionInitializer>();
         tetrisHolder = new GameObject("tetrisHolder").transform;
@@ -54,10 +56,5 @@ public class PawnPooler : MonoBehaviour
     public void AddToPool(TetrionInitializer objectToPooling)
     {
         pool.Enqueue(objectToPooling);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
