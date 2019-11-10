@@ -24,7 +24,7 @@ public abstract class Singleton<T> : MonoBehaviour where T:MonoBehaviour
                 if (_Instance == null)
                 {
                     // Search for existing instance.
-                    _Instance = (T)FindObjectOfType(typeof(T));
+                    _Instance = FindObjectOfType<T>();
 
                     // Create new instance if one doesn't already exist.
                     if (_Instance == null)

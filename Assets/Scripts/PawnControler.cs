@@ -8,7 +8,6 @@ public class PawnControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -16,7 +15,19 @@ public class PawnControler : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            pawn.transform.Translate(Vector3.back);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            pawn.transform.Translate(Vector3.forward);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            pawn.transform.Translate(Vector3.left);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            pawn.transform.Translate(Vector3.right);
         }
     }
     
