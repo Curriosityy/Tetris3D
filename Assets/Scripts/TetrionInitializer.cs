@@ -6,7 +6,7 @@ public class TetrionInitializer : MonoBehaviour
 {
     [SerializeField] GameObject[] parts;
     bool isInitialized = false;
-
+    PawnPooler pool;
     public bool IsInitialized
     {
         get
@@ -49,6 +49,10 @@ public class TetrionInitializer : MonoBehaviour
     void OnDisable()
     {
         isInitialized = false;
-        PawnPooler.Instance.AddToPool(this);
+        pool = PawnPooler.Instance;
+        if (pool != null)
+        {
+            PawnPooler.Instance.AddToPool(this);
+        }
     }
 }
