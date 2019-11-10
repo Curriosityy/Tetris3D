@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PawnPooler : MonoBehaviour
+public class PawnPooler : Singleton<PawnPooler>
 {
     static PawnPooler instance;
     [SerializeField] TetrionInitializer pawn;
@@ -11,24 +11,7 @@ public class PawnPooler : MonoBehaviour
 
     [SerializeField] int initialPoolSize=10;
     Transform tetrisHolder;
-    private static object _lock = new object();
-    public static PawnPooler Instance
-    {
-        get
-        {
-            lock(_lock)
-            {
-                if (instance == null)
-                {
-                    GameObject singletonObject = new GameObject();
-                    instance = singletonObject.AddComponent<PawnPooler>() as PawnPooler;
-                    singletonObject.name = typeof(PawnPooler).ToString() + " (Singleton)";
-                    instance.pawn = Resources.Load<TetrionInitializer>("Prefabs/TetrisPawn");
-                }
-            }
-            return instance;
-        }
-    }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -38,6 +21,7 @@ public class PawnPooler : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
+        pawn = Resources.Load<TetrionInitializer>("Prefabs/TetrisPawn");
         pool = new Queue<TetrionInitializer>();
         tetrisHolder = new GameObject("tetrisHolder").transform;
 
