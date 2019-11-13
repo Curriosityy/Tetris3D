@@ -7,6 +7,7 @@ public class TetrionInitializer : MonoBehaviour
     [SerializeField] GameObject[] parts;
     bool isInitialized = false;
     PawnPooler pool;
+    bool collided = false;
     public bool IsInitialized
     {
         get
@@ -21,6 +22,20 @@ public class TetrionInitializer : MonoBehaviour
     void Start()
     {
        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if ((collision.gameObject.GetComponent<TetrionInitializer>() != null || collision.gameObject.tag == "Plane") && collided == false)
+        {
+            collided = true;
+            PawnControler pc = FindObjectOfType<PawnControler>();
+            pc.Pawn = null;
+
+            Debug.Log("Collided");
+            pc.Pawn =FindObjectOfType<Spawner>().SpawnPawn();
+        }
+
     }
 
     public void Initialize(Vector3[] localPosition)
