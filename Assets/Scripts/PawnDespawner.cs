@@ -20,7 +20,7 @@ public class PawnDespawner : MonoBehaviour,IObserver
     }
     private void OnEnable()
     {
-        
+        counter = 0;
     }
     // Update is called once per frame
     void Update()
