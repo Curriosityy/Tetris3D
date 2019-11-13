@@ -34,6 +34,7 @@ public class TetrionInitializer : MonoBehaviour
 
             Debug.Log("Collided");
             pc.Pawn =FindObjectOfType<Spawner>().SpawnPawn();
+
         }
 
     }

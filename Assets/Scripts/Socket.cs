@@ -11,7 +11,7 @@ public class Socket
         SocketPos = pos;
     }
 
-    public GameObject TetrisPart{get;}
+    public GameObject TetrisPart{ get; set; }
 
     public Vector3 SocketPos
     {
