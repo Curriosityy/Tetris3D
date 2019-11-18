@@ -26,7 +26,9 @@ public class Socket
         }
         set
         {
+            value.GetComponent<PartMover>().CurrentSocket = this;
             _tetrisPart = value;
+
         }
     }
 
