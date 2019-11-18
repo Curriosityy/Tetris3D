@@ -34,6 +34,7 @@ public class PawnControler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+
                 pawn.transform.Translate(Vector3.back);
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
