@@ -40,11 +40,11 @@ public class Socket
         }
     }
 
-    public Socket Left { get => _left; set => _left = value; }
-    public Socket Right { get => _right; set => _right = value; }
-    public Socket Forward { get => _forward; set => _forward = value; }
-    public Socket Backward { get => _backward; set => _backward = value; }
-    public Socket Under { get => _under; set => _under = value; }
+    public Socket Left { get => _left; }
+    public Socket Right { get => _right;}
+    public Socket Forward { get => _forward; }
+    public Socket Backward { get => _backward;}
+    public Socket Under { get => _under;}
 
     public bool CheckTetrisSocket()
     {
