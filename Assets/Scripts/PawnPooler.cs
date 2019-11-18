@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PawnPooler : Singleton<PawnPooler>
 {
-    static PawnPooler instance;
     [SerializeField] TetrionInitializer pawn;
     Queue<TetrionInitializer> pool;
     private static bool isQuitting=false;
@@ -15,7 +14,7 @@ public class PawnPooler : Singleton<PawnPooler>
     // Start is called before the first frame update
     void Awake()
     {
-        if(instance!=null && instance!=this)
+        if(Instance!=null && Instance != this)
         {
             Destroy(gameObject);
             return;

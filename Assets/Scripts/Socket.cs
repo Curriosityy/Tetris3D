@@ -4,18 +4,38 @@ using UnityEngine;
 [System.Serializable]
 public class Socket
 {
-    Vector3 socketPos;
-    GameObject tetrisPart;
+    Vector3 _socketPos;
+    GameObject _tetrisPart;
+    public Socket _left, _right, _forward, _backward, _under;
     public Socket(Vector3 pos)
     {
-        SocketPos = pos;
+        _socketPos = pos;
     }
-
-    public GameObject TetrisPart{ get; set; }
+    public void SetNeightbors(Socket left, Socket right, Socket forward, Socket backward, Socket under)
+    {
+        _left = left;
+        _right = right;
+        _forward = forward;
+        _backward = backward;
+        _under = under;
+    }
+    public GameObject TetrisPart{
+        get
+        {
+            return _tetrisPart;
+        }
+        set
+        {
+            _tetrisPart = value;
+        }
+    }
 
     public Vector3 SocketPos
     {
-        get;
+        get
+        {
+            return _socketPos;
+        }
     }
 
     public bool CheckTetrisSocket()
@@ -23,7 +43,7 @@ public class Socket
         RaycastHit raycast;
         if (Physics.SphereCast(SocketPos, .4f, Vector3.forward, out raycast))
         {
-            tetrisPart = raycast.collider.gameObject;
+            _tetrisPart = raycast.collider.gameObject;
             return true;
         }
         return false;
