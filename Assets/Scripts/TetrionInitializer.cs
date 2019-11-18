@@ -16,12 +16,14 @@ public class TetrionInitializer : MonoBehaviour
         }
     }
 
+    public GameObject[] Parts { get; }
+
     private void Awake()
     {
     }
     void Start()
     {
-       
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,7 +35,7 @@ public class TetrionInitializer : MonoBehaviour
             pc.Pawn = null;
 
             Debug.Log("Collided");
-            pc.Pawn =FindObjectOfType<Spawner>().SpawnPawn();
+            pc.Pawn = FindObjectOfType<Spawner>().SpawnPawn();
 
         }
 
@@ -42,14 +44,14 @@ public class TetrionInitializer : MonoBehaviour
     public void Initialize(Vector3[] localPosition)
     {
 
-        if (localPosition.Length!= parts.Length)
+        if (localPosition.Length != parts.Length)
         {
             Debug.LogError("wrong number of localPosition-Initialize-TetrionInitializer");
 
             return;
         }
         isInitialized = true;
-        for (int i=0;i< parts.Length; i++)
+        for (int i = 0; i < parts.Length; i++)
         {
             parts[i].transform.position = localPosition[i];
             parts[i].SetActive(true);
@@ -59,7 +61,7 @@ public class TetrionInitializer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnDisable()
