@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class TetrionInitializer : MonoBehaviour
 {
-    [SerializeField] GameObject[] parts;
-    bool isInitialized = false;
-    PawnPooler pool;
-    bool collided = false;
+    [SerializeField] List<GameObject> _parts;
+    bool _isInitialized = false;
+    PawnPooler _pool;
+    bool _collided = false;
     public bool IsInitialized
     {
         get
         {
-            return isInitialized;
+            return _isInitialized;
         }
     }
 
-    public GameObject[] Parts { get; }
+    public List<GameObject> Parts { get { return _parts; } }
 
     private void Awake()
     {
@@ -28,9 +28,9 @@ public class TetrionInitializer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((collision.gameObject.GetComponent<TetrionInitializer>() != null || collision.gameObject.tag == "Plane") && collided == false)
+        if ((collision.gameObject.GetComponent<TetrionInitializer>() != null || collision.gameObject.tag == "Plane") && _collided == false)
         {
-            collided = true;
+            _collided = true;
             PawnControler pc = FindObjectOfType<PawnControler>();
             pc.Pawn = null;
 
@@ -44,17 +44,17 @@ public class TetrionInitializer : MonoBehaviour
     public void Initialize(Vector3[] localPosition)
     {
 
-        if (localPosition.Length != parts.Length)
+        if (localPosition.Length != _parts.Count)
         {
             Debug.LogError("wrong number of localPosition-Initialize-TetrionInitializer");
 
             return;
         }
-        isInitialized = true;
-        for (int i = 0; i < parts.Length; i++)
+        _isInitialized = true;
+        for (int i = 0; i < _parts.Count; i++)
         {
-            parts[i].transform.position = localPosition[i];
-            parts[i].SetActive(true);
+            _parts[i].transform.position = localPosition[i];
+            _parts[i].SetActive(true);
         }
         gameObject.SetActive(true);
     }
@@ -66,9 +66,9 @@ public class TetrionInitializer : MonoBehaviour
 
     void OnDisable()
     {
-        isInitialized = false;
-        pool = PawnPooler.Instance;
-        if (pool != null)
+        _isInitialized = false;
+        _pool = PawnPooler.Instance;
+        if (_pool != null)
         {
             PawnPooler.Instance.AddToPool(this);
         }
