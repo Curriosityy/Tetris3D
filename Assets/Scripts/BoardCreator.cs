@@ -59,30 +59,30 @@ public class BoardCreator : MonoBehaviour
                     Gizmos.color = Color.white;
                     if(socket.TetrisPart!=null)
                         Gizmos.DrawSphere(socket.SocketPos, 0.4f);
-                    if (socket._left!=null)
+                    if (socket.Left!=null)
                     {
                         Gizmos.color = Color.red;
-                        Gizmos.DrawLine(socket.SocketPos, socket._left.SocketPos);
+                        Gizmos.DrawLine(socket.SocketPos, socket.Left.SocketPos);
                     }
-                    if (socket._right != null)
+                    if (socket.Right != null)
                     {
                         Gizmos.color = Color.black;
-                        Gizmos.DrawLine(socket.SocketPos, socket._right.SocketPos);
+                        Gizmos.DrawLine(socket.SocketPos, socket.Right.SocketPos);
                     }
-                    if (socket._backward != null)
+                    if (socket.Backward != null)
                     {
                         Gizmos.color = Color.blue;
-                        Gizmos.DrawLine(socket.SocketPos, socket._backward.SocketPos);
+                        Gizmos.DrawLine(socket.SocketPos, socket.Backward.SocketPos);
                     }
-                    if (socket._forward != null)
+                    if (socket.Forward != null)
                     {
                         Gizmos.color = Color.cyan;
-                        Gizmos.DrawLine(socket.SocketPos, socket._forward.SocketPos);
+                        Gizmos.DrawLine(socket.SocketPos, socket.Forward.SocketPos);
                     }
-                    if (socket._under != null)
+                    if (socket.Under != null)
                     {
                         Gizmos.color = Color.yellow;
-                        Gizmos.DrawLine(socket.SocketPos, socket._under.SocketPos);
+                        Gizmos.DrawLine(socket.SocketPos, socket.Under.SocketPos);
                     }
                     Gizmos.color = Color.magenta;
                     Handles.Label(socket.SocketPos, "[" + i + "," + j + "]");

@@ -6,7 +6,7 @@ public class Socket
 {
     Vector3 _socketPos;
     GameObject _tetrisPart;
-    public Socket _left, _right, _forward, _backward, _under;
+    Socket _left, _right, _forward, _backward, _under;
     public Socket(Vector3 pos)
     {
         _socketPos = pos;
@@ -39,6 +39,12 @@ public class Socket
             return _socketPos;
         }
     }
+
+    public Socket Left { get => _left; set => _left = value; }
+    public Socket Right { get => _right; set => _right = value; }
+    public Socket Forward { get => _forward; set => _forward = value; }
+    public Socket Backward { get => _backward; set => _backward = value; }
+    public Socket Under { get => _under; set => _under = value; }
 
     public bool CheckTetrisSocket()
     {
