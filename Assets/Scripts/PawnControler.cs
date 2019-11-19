@@ -5,7 +5,7 @@ using UnityEngine;
 public class PawnControler : MonoBehaviour
 {
     TetrionInitializer pawn;
-
+    TetrisMover pawnMover;
     public TetrionInitializer Pawn
     {
         get
@@ -15,6 +15,7 @@ public class PawnControler : MonoBehaviour
 
         set
         {
+            pawnMover = value.GetComponent<TetrisMover>();
             pawn = value;
         }
     }
@@ -22,7 +23,7 @@ public class PawnControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pawn = FindObjectOfType<Spawner>().SpawnPawn();
+        Pawn = FindObjectOfType<Spawner>().SpawnPawn();
     }
 
 
@@ -34,20 +35,19 @@ public class PawnControler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-
-                pawn.transform.Translate(Vector3.back);
+                pawnMover.MoveBackward();
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                pawn.transform.Translate(Vector3.forward);
+                pawnMover.MoveForward();
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                pawn.transform.Translate(Vector3.left);
+                pawnMover.MoveLeft();
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                pawn.transform.Translate(Vector3.right);
+                pawnMover.MoveRight();
             }
         }
     }
