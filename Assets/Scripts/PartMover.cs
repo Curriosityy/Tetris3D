@@ -8,7 +8,36 @@ public class PartMover : MonoBehaviour
 
     public Socket CurrentSocket { get => _currentSocket; set => _currentSocket = value; }
 
-    public bool IsCanFallDown()
+    public void MoveLeft()
+    {
+        Move(_currentSocket.Left);
+    }
+    public void MoveRight()
+    {
+        Move(_currentSocket.Right);
+    }
+
+    public void MoveForward()
+    {
+        Move(_currentSocket.Forward);
+    }
+
+    public void MoveBackward()
+    {
+        Move(_currentSocket.Backward);
+    }
+    public void Fall()
+    {
+        Move(_currentSocket.Under);
+    }
+
+    private void Move(Socket direction)
+    {
+        _currentSocket.TetrisPart = null;
+        direction.TetrisPart = gameObject;
+    }
+
+    public bool IsCanFall()
     {
         return IsCanMove(_currentSocket.Under);
     }
