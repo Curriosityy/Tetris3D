@@ -10,22 +10,38 @@ public class PartMover : MonoBehaviour
 
     public bool IsCanFallDown()
     {
-        return _currentSocket.Under.TetrisPart == null ? true : false;
+        return IsCanMove(_currentSocket.Under);
     }
     public bool IsCanMoveLeft()
     {
-        return _currentSocket.Left.TetrisPart == null ? true : false;
+        return IsCanMove(_currentSocket.Left);
     }
     public bool IsCanMoveRight()
     {
-        return _currentSocket.Right.TetrisPart == null ? true : false;
+        return IsCanMove(_currentSocket.Right);
     }
     public bool IsCanMoveBackward()
     {
-        return _currentSocket.Backward.TetrisPart == null ? true : false;
+        return IsCanMove(_currentSocket.Backward);
     }
     public bool IsCanMoveForward()
     {
-        return _currentSocket.Forward.TetrisPart == null ? true : false;
+        return IsCanMove(_currentSocket.Forward);
+    }
+    private bool IsCanMove(Socket dicertion)
+    {
+        if (dicertion == null)
+        {
+            return false;
+        }
+        if (dicertion.TetrisPart == null)
+        {
+            return true;
+        }
+        if (dicertion.TetrisPart.GetComponentInParent<GameObject>() == GetComponentInParent<GameObject>())
+        {
+            return true;
+        }
+        return false;
     }
 }
