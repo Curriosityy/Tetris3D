@@ -38,7 +38,7 @@ public class PartMover : MonoBehaviour
         {
             return true;
         }
-        if (dicertion.TetrisPart.GetComponentInParent<GameObject>() == GetComponentInParent<GameObject>())
+        if (dicertion.TetrisPart.transform.parent == transform.parent)
         {
             return true;
         }
