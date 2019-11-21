@@ -4,12 +4,17 @@ using UnityEngine;
 [System.Serializable]
 public class Socket
 {
+    int _layer;
+    int _xInArray, _yInArray;
     Vector3 _socketPos;
     GameObject _tetrisPart;
     Socket _left, _right, _forward, _backward, _under;
-    public Socket(Vector3 pos)
+    public Socket(Vector3 pos,int layer,int x,int y)
     {
         _socketPos = pos;
+        _layer = layer;
+        _xInArray = x;
+        _yInArray = y;
     }
     public void SetNeightbors(Socket left, Socket right, Socket forward, Socket backward, Socket under)
     {
@@ -46,6 +51,9 @@ public class Socket
     public Socket Forward { get => _forward; }
     public Socket Backward { get => _backward;}
     public Socket Under { get => _under;}
+    public int Layer { get => _layer;}
+    public int XInArray { get => _xInArray; }
+    public int YInArray { get => _yInArray; }
 
     public bool CheckTetrisSocket()
     {
