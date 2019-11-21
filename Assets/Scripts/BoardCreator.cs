@@ -23,7 +23,7 @@ public class BoardCreator : MonoBehaviour
             {
                 for (int j = 0; j < z; j++)
                 {
-                    _socketLayers[k][i, j] = new Socket(new Vector3((x / (2 * -1) + 1) + i, k, (z / (2 * -1) + 1) + j));
+                    _socketLayers[k][i, j] = new Socket(new Vector3((x / (2 * -1) + 1) + i, k, (z / (2 * -1) + 1) + j),k,i,j);
                 }
             }
         }
