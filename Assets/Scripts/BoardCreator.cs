@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BoardCreator : MonoBehaviour
 {
-    int x = 8, y = 8, z = 8;
+    int x = GameManager.x, y = GameManager.y, z = GameManager.z;
     [SerializeField]
     List<Socket[,]> _socketLayers;
 
@@ -16,18 +16,19 @@ public class BoardCreator : MonoBehaviour
     private void Awake()
     {
         _socketLayers = new List<Socket[,]>();
-        for (int k = 0; k < y; k++)
+        for (int k = 0; k < y+4; k++)
         {
             _socketLayers.Add(new Socket[x, z]);
             for (int i = 0; i < x; i++)
             {
                 for (int j = 0; j < z; j++)
                 {
+
                     _socketLayers[k][i, j] = new Socket(new Vector3((x / (2 * -1) + 1) + i, k, (z / (2 * -1) + 1) + j),k,i,j);
                 }
             }
         }
-        for (int k = 0; k < y; k++)
+        for (int k = 0; k < y+4; k++)
         {
             for (int i = 0; i < x; i++)
             {
@@ -53,7 +54,6 @@ public class BoardCreator : MonoBehaviour
         {
             foreach (var layer in _socketLayers)
             {
-                
                 foreach(var socket in layer)
                 {
                     Gizmos.color = Color.white;
@@ -93,6 +93,7 @@ public class BoardCreator : MonoBehaviour
                         j %= 8;
                     }
                 }
+                
 
             }
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public static int x = 8, y = 8, z = 8;
     // Start is called before the first frame update
     void Start()
     {

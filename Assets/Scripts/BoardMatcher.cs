@@ -22,9 +22,15 @@ public class BoardMatcher : MonoBehaviour
     }
     private void DestroyLayers()
     {
+        int lay=0;
         foreach (var layer in socketLayers)
         {
-            if(CheckIfLayerIsFull(layer))
+            lay++;
+            if (lay == GameManager.y)
+            {
+                break;
+            }
+            if (CheckIfLayerIsFull(layer))
             {
                 DeactivateLayer(layer);
             }
@@ -37,10 +43,5 @@ public class BoardMatcher : MonoBehaviour
             socket.TetrisPart.SetActive(false);
             socket.TetrisPart = null;
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
