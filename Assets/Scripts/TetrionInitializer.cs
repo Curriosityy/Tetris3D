@@ -55,6 +55,7 @@ public class TetrionInitializer : MonoBehaviour
         {
             _parts[i].transform.position = localPosition[i];
             _parts[i].SetActive(true);
+            _parts[i].GetComponent<PartRotator>().Initialize(localPosition[i]);
         }
         gameObject.SetActive(true);
     }

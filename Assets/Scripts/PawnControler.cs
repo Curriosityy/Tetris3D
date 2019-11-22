@@ -6,6 +6,7 @@ public class PawnControler : MonoBehaviour
 {
     TetrionInitializer pawn;
     TetrisMover pawnMover;
+    PawnRotator pawnRotator;
     public TetrionInitializer Pawn
     {
         get
@@ -16,6 +17,7 @@ public class PawnControler : MonoBehaviour
         set
         {
             pawnMover = value.GetComponent<TetrisMover>();
+            pawnRotator = value.GetComponent<PawnRotator>();
             pawn = value;
         }
     }
@@ -48,6 +50,10 @@ public class PawnControler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 pawnMover.MoveRight();
+            }
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                pawnRotator.RotateLeft();
             }
         }
     }
