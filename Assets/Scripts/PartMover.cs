@@ -4,58 +4,60 @@ using UnityEngine;
 
 public class PartMover : MonoBehaviour
 {
-    Socket _currentSocket;
-
-    public Socket CurrentSocket { get => _currentSocket; set => _currentSocket = value; }
+    Part _partInfo;
+    private void Start()
+    {
+        _partInfo = GetComponent<Part>();
+    }
 
     public void MoveLeft()
     {
-        Move(_currentSocket.Left);
+        Move(_partInfo.CurrentSocket.Left);
     }
     public void MoveRight()
     {
-        Move(_currentSocket.Right);
+        Move(_partInfo.CurrentSocket.Right);
     }
 
     public void MoveForward()
     {
-        Move(_currentSocket.Forward);
+        Move(_partInfo.CurrentSocket.Forward);
     }
 
     public void MoveBackward()
     {
-        Move(_currentSocket.Backward);
+        Move(_partInfo.CurrentSocket.Backward);
     }
     public void Fall()
     {
-        Move(_currentSocket.Under);
+        Move(_partInfo.CurrentSocket.Under);
     }
 
     private void Move(Socket direction)
     {
-        _currentSocket.TetrisPart = null;
+        _partInfo.CurrentSocket.TetrisPart = null;
         direction.TetrisPart = gameObject;
     }
 
     public bool IsCanFall()
     {
-        return IsCanMove(_currentSocket.Under);
+        return IsCanMove(_partInfo.CurrentSocket.Under);
     }
     public bool IsCanMoveLeft()
     {
-        return IsCanMove(_currentSocket.Left);
+        return IsCanMove(_partInfo.CurrentSocket.Left);
     }
     public bool IsCanMoveRight()
     {
-        return IsCanMove(_currentSocket.Right);
+        return IsCanMove(_partInfo.CurrentSocket.Right);
     }
     public bool IsCanMoveBackward()
     {
-        return IsCanMove(_currentSocket.Backward);
+        return IsCanMove(_partInfo.CurrentSocket.Backward);
     }
     public bool IsCanMoveForward()
     {
-        return IsCanMove(_currentSocket.Forward);
+        return IsCanMove(_partInfo.CurrentSocket.Forward);
     }
     private bool IsCanMove(Socket dicertion)
     {
