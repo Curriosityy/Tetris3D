@@ -17,29 +17,50 @@ public class PawnRotator : MonoBehaviour
             _parts.Add(part.GetComponent<PartRotator>());
         });
         _layers = FindObjectOfType<BoardCreator>().SocketLayers;
+        _parts.ForEach(part => 
+        {
+            if (part.transform.localPosition == Vector3.zero)
+                _rootPart = part.GetComponent<Part>();
+        });
 
     }
 
-
-    public void Rotate(float phi, float theta)
-    {
-        
-    }
 
     public void RotateLeft()
     {
-        Rotate(0, Mathf.PI / 2);
+        List<Vector3> newLocalPositions = new List<Vector3>();
+        Vector3 temp;
+        Vector3Int newArrayPos;
+        foreach (var part in _parts)
+        {
+            temp = part.RotateVertically(new Vector2(1, -1));
+            if(!part.IsRotationPosible(temp,_rootPart.CurrentSocket))
+            {
+                Debug.Log("cannot rotate");
+                return;
+            }
+            newLocalPositions.Add(temp);
+        }
+        int i = 0;
+        foreach(var part in _parts)
+        {
+            part.GetComponent<Part>().CurrentSocket.TetrisPart = null;
+            newArrayPos = part.GetNewPositionInArray(newLocalPositions[i], _rootPart.CurrentSocket);
+            _layers[newArrayPos.y][newArrayPos.x, newArrayPos.z].TetrisPart = part.gameObject;
+            part.transform.localPosition = newLocalPositions[i];
+            i++;
+        }
     }
     public void RotateUp()
     {
-        Rotate(Mathf.PI / 2, 0);
+        
     }
     public void RotateRight()
     {
-        Rotate(0, -Mathf.PI / 2);
+        
     }
     public void RotateDown()
     {
-        Rotate(-Mathf.PI / 2, 0);
+        
     }
 }
