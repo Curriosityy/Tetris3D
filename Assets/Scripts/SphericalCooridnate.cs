@@ -14,7 +14,7 @@ public class SphericalCooridnate
         _r = Mathf.Sqrt(Mathf.Pow(pointToConvert.x, 2) + Mathf.Pow(pointToConvert.y, 2) + Mathf.Pow(pointToConvert.z, 2));
         _theta = Mathf.Acos(_r == 0 ? 0 : (pointToConvert.z / _r));
         if (pointToConvert.x == -1)
-            _theta += Mathf.PI;
+            _theta *= -1;
         _phi = Mathf.Atan(pointToConvert.x == 0 ? 0 : (pointToConvert.y / pointToConvert.x));
     }
     public SphericalCooridnate(float r, float phi, float theta)

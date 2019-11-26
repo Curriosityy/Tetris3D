@@ -55,6 +55,18 @@ public class PawnControler : MonoBehaviour
             {
                 pawnRotator.RotateLeft();
             }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                pawnRotator.RotateDown();
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                pawnRotator.RotateRight();
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                pawnRotator.RotateUp();
+            }
         }
     }
 }
