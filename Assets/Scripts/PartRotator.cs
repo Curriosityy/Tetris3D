@@ -6,15 +6,11 @@ public class PartRotator : MonoBehaviour
 {
     bool isInitialized = false;
 
-    SphericalCooridnate _coord;
-
-    public SphericalCooridnate SphericalCooridnate { get => _coord; set => _coord = value; }
 
     // Start is called before the first frame update
 
     public void Initialize(Vector3 pos)
     {
-        _coord = new SphericalCooridnate(pos);
         isInitialized = true;
     }
 
@@ -36,17 +32,9 @@ public class PartRotator : MonoBehaviour
         }
         return false;
     }
-    public bool IsRotationPosible(SphericalCooridnate rotatedCoord,Socket rootSocket)
+    public bool IsRotationPosible(Socket rootSocket)
     {
 
-        Vector3 cartesian = rotatedCoord.GetCartesianPoint();
-        cartesian.x += rootSocket.XInArray;
-        cartesian.y += rootSocket.Layer;
-        cartesian.z += rootSocket.YInArray;
-        if (IsNewPositionInBoard(cartesian) && IsNewPositionSocketEmpty(cartesian))
-        {
-            return true;
-        }
         return false;
     }
     private void OnDisable()
