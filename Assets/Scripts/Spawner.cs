@@ -12,15 +12,15 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         _tetriminos = new List<Tetrimino>();
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0), new Vector3(3, 0, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0), new Vector3(2, -1, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, -1, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(1, -1, 0), new Vector3(2, -1, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, -1, 0), new Vector3(1, -1, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(0, -1, 0), new Vector3(1, -1, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0), new Vector3(1, -1, 0) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(1, -1, 0), new Vector3(1, -1, 1) }));
-        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(0, -1, 0), new Vector3(1, -1, 0), new Vector3(1, 0, 0), new Vector3(1, 0, 1) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(2, 0, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(1, -1, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, -1, 0), new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(0, -1, 0), new Vector3(1, -1, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, -1, 0), new Vector3(0, -1, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(-1, -1, 0), new Vector3(0, -1, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(0, -1, 0) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(0, -1, 0), new Vector3(0, -1, 1) }));
+        _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, -1, 0), new Vector3(0, -1, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 1) }));
         _boardCreator = FindObjectOfType<BoardCreator>();
     }
 

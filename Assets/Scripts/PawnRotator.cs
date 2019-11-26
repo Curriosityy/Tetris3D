@@ -27,28 +27,29 @@ public class PawnRotator : MonoBehaviour
         SphericalCooridnate newCoodr;
         foreach(var part in _parts)
         {
-            newCoodr = part.SphericalCooridnate.RotateCoordinateBy(0, Mathf.PI / 2);
-            if (!part.IsRotationPosible(newCoodr))
+            newCoodr = part.SphericalCooridnate.RotateCoordinateBy(0, Mathf.PI/2);
+            if (!part.IsRotationPosible(newCoodr,_rootPart.CurrentSocket))
             {
                 return;
             }
             newCoords.Add(newCoodr);
 
         }
+        int i = 0;
         foreach(var part in _parts)
         {
-            //Vector2 newPhiAndTheta = part.Rotate(new Vector2(0, Mathf.PI / 2));
-            //part.Phi = newPhiAndTheta.x;
-            //part.Theta = newPhiAndTheta.y;
-            //Vector3 newSocketPos = part.CountCartesian(part.R, newPhiAndTheta.x, newPhiAndTheta.y);
-            //Socket currSock = part.GetComponent<PartMover>().CurrentSocket;
-            //newSocketPos.x += rootSocketPosition.XInArray;
-            //newSocketPos.y += rootSocketPosition.Layer;
-            //newSocketPos.z += rootSocketPosition.YInArray;
-            //currSock.TetrisPart = null;
-            //Socket newSocket = layers[(int)Mathf.Ceil(newSocketPos.y)][(int)Mathf.Ceil(newSocketPos.x), (int)Mathf.Ceil(newSocketPos.z)];
-            //newSocket.TetrisPart =part.gameObject;
-            //part.transform.position=part.GetComponent<PartMover>().CurrentSocket.SocketPos;
+            Debug.Log("current coord="+part.SphericalCooridnate+" "+part.SphericalCooridnate.GetCartesianPoint()+" newCoord="+newCoords[i]+" "+newCoords[i].GetCartesianPoint());
+            part.SphericalCooridnate = newCoords[i];
+            Vector3 newSocketPos = part.SphericalCooridnate.GetCartesianPoint();
+            Socket _rootSocket = _rootPart.CurrentSocket;
+            newSocketPos.x += _rootSocket.XInArray;
+            newSocketPos.y += _rootSocket.Layer;
+            newSocketPos.z += _rootSocket.YInArray;
+            part.GetComponent<Part>().CurrentSocket.TetrisPart = null;
+            Socket newSocket = _layers[(int)Mathf.Ceil(newSocketPos.y)][(int)Mathf.Ceil(newSocketPos.x), (int)Mathf.Ceil(newSocketPos.z)];
+            newSocket.TetrisPart =part.gameObject;
+            part.transform.position = newSocket.SocketPos;
+            i++;
         }
         
     }

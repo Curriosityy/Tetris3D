@@ -36,16 +36,13 @@ public class PartRotator : MonoBehaviour
         }
         return false;
     }
-    public bool IsRotationPosible(SphericalCooridnate rotatedCoord)
+    public bool IsRotationPosible(SphericalCooridnate rotatedCoord,Socket rootSocket)
     {
-        //SphericalCooridnate rotatedCoord = coord.RotateCoordinateBy(phiAndTheta.x,phiAndTheta.y);
+
         Vector3 cartesian = rotatedCoord.GetCartesianPoint();
-
-        //Socket rootSocket = GetComponent<PartMover>().CurrentSocket;
-        //cartesian.x += socket.XInArray;
-        //cartesian.y += socket.Layer;
-        //cartesian.z += socket.YInArray;
-
+        cartesian.x += rootSocket.XInArray;
+        cartesian.y += rootSocket.Layer;
+        cartesian.z += rootSocket.YInArray;
         if (IsNewPositionInBoard(cartesian) && IsNewPositionSocketEmpty(cartesian))
         {
             return true;
