@@ -37,8 +37,8 @@ public class BoardCreator : MonoBehaviour
                     
                     _socketLayers[k][i, j].SetNeightbors(i > 0 ? _socketLayers[k][i - 1, j] : null,
                                                         i < x - 1 ? _socketLayers[k][i + 1, j] : null,
-                                                        j > 0 ? _socketLayers[k][i, j - 1] : null,
                                                         j < z - 1 ? _socketLayers[k][i, j + 1] : null,
+                                                        j > 0 ? _socketLayers[k][i, j - 1] : null,
                                                         k > 0 ? _socketLayers[k - 1][i, j] : null);
                 }
             }
