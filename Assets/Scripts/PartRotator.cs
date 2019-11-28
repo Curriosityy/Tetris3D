@@ -35,7 +35,7 @@ public class PartRotator : MonoBehaviour
     private bool IsNewPositionSocketEmpty(Vector3 newPosition)
     {
         Socket socket = FindObjectOfType<BoardCreator>().SocketLayers[(int)newPosition.y][(int)newPosition.x, (int)newPosition.z];
-        if(socket.TetrisPart==null || socket.TetrisPart==gameObject)
+        if(socket.TetrisPart==null || socket.TetrisPart==gameObject || socket.TetrisPart.transform.parent==transform.parent)
         {
             return true;
         }

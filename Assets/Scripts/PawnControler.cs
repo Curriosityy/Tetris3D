@@ -16,8 +16,11 @@ public class PawnControler : MonoBehaviour
 
         set
         {
-            pawnMover = value.GetComponent<TetrisMover>();
-            pawnRotator = value.GetComponent<PawnRotator>();
+            if (value!=null)
+            {
+                pawnMover = value.GetComponent<TetrisMover>();
+                pawnRotator = value.GetComponent<PawnRotator>();
+            }
             pawn = value;
         }
     }
@@ -25,7 +28,6 @@ public class PawnControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Pawn = FindObjectOfType<Spawner>().SpawnPawn();
     }
 
 

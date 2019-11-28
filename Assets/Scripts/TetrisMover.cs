@@ -85,7 +85,11 @@ public class TetrisMover : MonoBehaviour
         transform.Translate(Vector3.back);
 
     }
-
+    private void Collided()
+    {
+        PawnControler pc = FindObjectOfType<PawnControler>();
+        FindObjectOfType<BattleManager>().GetComponent<Animator>().SetTrigger("Collided");
+    }
     public void Fall()
     {
 
@@ -93,7 +97,7 @@ public class TetrisMover : MonoBehaviour
         {
             if (!part.IsCanFall())
             {
-
+                Collided();
                 return;
             }
         }
@@ -104,6 +108,5 @@ public class TetrisMover : MonoBehaviour
             part.Fall();
         }
         transform.Translate(Vector3.down);
-
     }
 }

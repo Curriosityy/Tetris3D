@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     PawnPooler _pool;
     List<Tetrimino> _tetriminos;
     BoardCreator _boardCreator;
+    BattleManager bm;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class Spawner : MonoBehaviour
         _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, 0, 0), new Vector3(0, 0, 0), new Vector3(0, -1, 0), new Vector3(0, -1, 1) }));
         _tetriminos.Add(new Tetrimino(new Vector3[] { new Vector3(-1, -1, 0), new Vector3(0, -1, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 1) }));
         _boardCreator = FindObjectOfType<BoardCreator>();
+        bm = FindObjectOfType<BattleManager>();
     }
 
     public TetrionInitializer SpawnPawn()
@@ -34,7 +36,7 @@ public class Spawner : MonoBehaviour
             pawn.Initialize(randomTet.Pos);
             SettingUpInGraph(randomTet, pawn);
             pawn.transform.position = transform.position;
-            
+            bm.GetComponent<Animator>().SetTrigger("Spawned");
             return pawn;
         }
         return null;

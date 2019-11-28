@@ -5,6 +5,7 @@ using UnityEngine;
 public class TetrionInitializer : MonoBehaviour
 {
     [SerializeField] List<GameObject> _parts;
+
     bool _isInitialized = false;
     PawnPooler _pool;
     bool _collided = false;
@@ -23,21 +24,6 @@ public class TetrionInitializer : MonoBehaviour
     }
     void Start()
     {
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if ((collision.gameObject.GetComponent<TetrionInitializer>() != null || collision.gameObject.tag == "Plane") && _collided == false)
-        {
-            _collided = true;
-            PawnControler pc = FindObjectOfType<PawnControler>();
-            pc.Pawn = null;
-
-            Debug.Log("Collided");
-            pc.Pawn = FindObjectOfType<Spawner>().SpawnPawn();
-
-        }
 
     }
 
