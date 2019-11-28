@@ -19,14 +19,6 @@ public class TetrionInitializer : MonoBehaviour
 
     public List<GameObject> Parts { get { return _parts; } }
 
-    private void Awake()
-    {
-    }
-    void Start()
-    {
-
-    }
-
     public void Initialize(Vector3[] localPosition)
     {
 

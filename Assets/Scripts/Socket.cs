@@ -9,7 +9,7 @@ public class Socket
     Vector3 _socketPos;
     GameObject _tetrisPart;
     Socket _left, _right, _forward, _backward, _under;
-    public Socket(Vector3 pos,int layer,int x,int y)
+    public Socket(Vector3 pos, int layer, int x, int y)
     {
         _socketPos = pos;
         _layer = layer;
@@ -24,14 +24,15 @@ public class Socket
         _backward = backward;
         _under = under;
     }
-    public GameObject TetrisPart{
+    public GameObject TetrisPart
+    {
         get
         {
             return _tetrisPart;
         }
         set
         {
-            if(value!=null)
+            if (value != null)
             {
                 value.GetComponent<Part>().CurrentSocket = this;
             }
@@ -50,24 +51,21 @@ public class Socket
     }
 
     public Socket Left { get => _left; }
-    public Socket Right { get => _right;}
+    public Socket Right { get => _right; }
     public Socket Forward { get => _forward; }
-    public Socket Backward { get => _backward;}
-    public Socket Under { get => _under;}
-    public int Layer { get => _layer;}
+    public Socket Backward { get => _backward; }
+    public Socket Under { get => _under; }
+    public int Layer { get => _layer; }
     public int XInArray { get => _xInArray; }
     public int YInArray { get => _yInArray; }
 
-    public bool CheckTetrisSocket()
+    public bool IsSocketEmpty()
     {
-        RaycastHit raycast;
-        if (Physics.SphereCast(SocketPos, .4f, Vector3.forward, out raycast))
+        if (_tetrisPart == null)
         {
-            _tetrisPart = raycast.collider.gameObject;
             return true;
         }
         return false;
-        
     }
 }
 

@@ -1,41 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class BoardMatcher : MonoBehaviour
 {
-    List<Socket[,]> socketLayers;
+    List<Socket[,]> _socketLayers;
+    BattleManager _battleManager;
     void Start()
     {
-        socketLayers = GetComponent<BoardCreator>().SocketLayers;
+        _socketLayers = GetComponent<BoardCreator>().SocketLayers;
+        _battleManager = FindObjectOfType<BattleManager>();
     }
     private bool CheckIfLayerIsFull(Socket[,] layer)
     {
         foreach(var socket in layer)
         {
-            if(!socket.CheckTetrisSocket())
+            if(socket.IsSocketEmpty())
             {
                 return false;
             }
         }
         return true;
     }
-    private void DestroyLayers()
+    public void DestroyLayers()
     {
-        int lay=0;
-        foreach (var layer in socketLayers)
+        foreach (var layer in _socketLayers)
         {
-            lay++;
-            if (lay == GameManager.y)
-            {
-                break;
-            }
             if (CheckIfLayerIsFull(layer))
             {
                 DeactivateLayer(layer);
             }
         }
+        _battleManager.GetComponent<Animator>().SetTrigger("MatchEnd");
     }
+
     private void DeactivateLayer(Socket[,] layer)
     {
         foreach(var socket in layer)
@@ -44,4 +42,5 @@ public class BoardMatcher : MonoBehaviour
             socket.TetrisPart = null;
         }
     }
+
 }
