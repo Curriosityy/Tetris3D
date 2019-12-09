@@ -22,16 +22,20 @@ public class BoardMatcher : MonoBehaviour
         }
         return true;
     }
-    public void DestroyLayers()
+    public List<int> DestroyLayers()
     {
+        List<int> destroyedLayers = new List<int>();
+        int index = 0;
         foreach (var layer in _socketLayers)
         {
             if (CheckIfLayerIsFull(layer))
             {
                 DeactivateLayer(layer);
+                destroyedLayers.Add(index);
             }
+            index++;
         }
-        _battleManager.GetComponent<Animator>().SetTrigger("MatchEnd");
+        return destroyedLayers;
     }
 
     private void DeactivateLayer(Socket[,] layer)
