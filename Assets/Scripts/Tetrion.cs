@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetrionInitializer : MonoBehaviour
+public class Tetrion : MonoBehaviour
 {
     [SerializeField] List<GameObject> _parts;
 
@@ -36,12 +36,6 @@ public class TetrionInitializer : MonoBehaviour
         }
         gameObject.SetActive(true);
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnDisable()
     {
         _isInitialized = false;

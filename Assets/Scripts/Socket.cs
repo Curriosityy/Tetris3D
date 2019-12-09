@@ -32,13 +32,7 @@ public class Socket
         }
         set
         {
-            if (value != null)
-            {
-                value.GetComponent<Part>().CurrentSocket = this;
-            }
-
             _tetrisPart = value;
-
         }
     }
 

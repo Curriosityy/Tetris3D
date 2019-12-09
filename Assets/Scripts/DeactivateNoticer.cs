@@ -23,6 +23,7 @@ public class DeactivateNoticer : MonoBehaviour,ISubject
 
     private void OnDisable()
     {
-        Notify();
+        if(_observer!=null)
+            Notify();
     }
 }

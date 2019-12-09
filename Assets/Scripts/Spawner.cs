@@ -26,13 +26,14 @@ public class Spawner : MonoBehaviour
         bm = FindObjectOfType<BattleManager>();
     }
 
-    public TetrionInitializer SpawnPawn()
+    public Tetrion SpawnPawn()
     {
         _pool = PawnPooler.Instance;
         if (_pool != null)
         {
-            TetrionInitializer pawn = _pool.GetFromPool();
-            Tetrimino randomTet = _tetriminos[Random.Range(0, _tetriminos.Count)];
+            Tetrion pawn = _pool.GetFromPool();
+            //Tetrimino randomTet = _tetriminos[Random.Range(0, _tetriminos.Count)];
+            Tetrimino randomTet = _tetriminos[1];
             pawn.Initialize(randomTet.Pos);
             SettingUpInGraph(randomTet, pawn);
             pawn.transform.position = transform.position;
@@ -42,7 +43,7 @@ public class Spawner : MonoBehaviour
         return null;
 
     }
-    void SettingUpInGraph(Tetrimino tetrimino,TetrionInitializer initializer)
+    void SettingUpInGraph(Tetrimino tetrimino,Tetrion initializer)
     {
         Socket socket;
         int x = 3, y = 7, z = 3;
@@ -50,8 +51,8 @@ public class Spawner : MonoBehaviour
         {
             socket=_boardCreator.SocketLayers[y + (int)tetrimino.Pos[i].y][x + (int)tetrimino.Pos[i].x, z + (int)tetrimino.Pos[i].z];
             socket.TetrisPart = initializer.Parts[i];
+            initializer.Parts[i].GetComponent<Part>().CurrentSocket = socket;
         }
-
     }
 
 }

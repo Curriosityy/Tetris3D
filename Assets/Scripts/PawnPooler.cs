@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PawnPooler : Singleton<PawnPooler>
 {
-    [SerializeField] TetrionInitializer pawn;
-    Queue<TetrionInitializer> pool;
+    [SerializeField] Tetrion pawn;
+    Queue<Tetrion> pool;
     private static bool isQuitting=false;
 
     [SerializeField] int initialPoolSize=10;
@@ -14,25 +14,16 @@ public class PawnPooler : Singleton<PawnPooler>
     // Start is called before the first frame update
     void Awake()
     {
-        if(Instance!=null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(this);
-        pawn = Resources.Load<TetrionInitializer>("Prefabs/TetrisPawn");
-        pool = new Queue<TetrionInitializer>();
+        pawn = Resources.Load<Tetrion>("Prefabs/TetrisPawn");
+        pool = new Queue<Tetrion>();
         tetrisHolder = new GameObject("tetrisHolder").transform;
-
-    }
-    private void Start()
-    {
         for (int i = 0; i < initialPoolSize; i++)
         {
             pool.Enqueue(Instantiate(pawn, tetrisHolder));
         }
+
     }
-    public TetrionInitializer GetFromPool()
+    public Tetrion GetFromPool()
     {
         Debug.Log(pool.Count);
         if (pool.Count==0)
@@ -42,7 +33,7 @@ public class PawnPooler : Singleton<PawnPooler>
         return pool.Dequeue();
     }
 
-    public void AddToPool(TetrionInitializer objectToPooling)
+    public void AddToPool(Tetrion objectToPooling)
     {
         pool.Enqueue(objectToPooling);
     }

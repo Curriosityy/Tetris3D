@@ -13,30 +13,39 @@ public class PartMover : MonoBehaviour
     public void MoveLeft()
     {
         Move(_partInfo.CurrentSocket.Left);
+        transform.Translate(Vector3.left);
     }
     public void MoveRight()
     {
         Move(_partInfo.CurrentSocket.Right);
+        transform.Translate(Vector3.right);
     }
 
     public void MoveForward()
     {
         Move(_partInfo.CurrentSocket.Forward);
+        transform.Translate(Vector3.forward);
     }
 
     public void MoveBackward()
     {
         Move(_partInfo.CurrentSocket.Backward);
+        transform.Translate(Vector3.back);
     }
     public void Fall()
     {
         Move(_partInfo.CurrentSocket.Under);
+        transform.Translate(Vector3.down);
     }
 
     private void Move(Socket direction)
     {
-        _partInfo.CurrentSocket.TetrisPart = null;
+        if(_partInfo.CurrentSocket.TetrisPart==gameObject)
+        {
+            _partInfo.CurrentSocket.TetrisPart = null;
+        }
         direction.TetrisPart = gameObject;
+        _partInfo.CurrentSocket = direction;
     }
 
     public bool IsCanFall()

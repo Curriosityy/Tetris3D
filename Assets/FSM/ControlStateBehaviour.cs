@@ -20,7 +20,7 @@ public class ControlStateBehaviour : StateMachineBehaviour
         i += Time.deltaTime;
         if (i >= speed)
         {
-            pc.Pawn.GetComponent<TetrisMover>().Fall();
+            pc.Pawn.GetComponent<PawnMover>().Fall();
             i = 0;
         }
 

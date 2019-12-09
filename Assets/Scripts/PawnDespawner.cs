@@ -35,7 +35,7 @@ public class PawnDespawner : MonoBehaviour,IObserver
             PawnPooler pp = PawnPooler.Instance;
             if(pp!=null)
             {
-                PawnPooler.Instance.AddToPool(GetComponent<TetrionInitializer>());
+                PawnPooler.Instance.AddToPool(GetComponent<Tetrion>());
                 gameObject.SetActive(false);
             }
 

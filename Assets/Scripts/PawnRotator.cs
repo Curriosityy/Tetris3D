@@ -12,7 +12,7 @@ public class PawnRotator : MonoBehaviour
     {
 
         _parts = new List<PartRotator>();
-        GetComponent<TetrionInitializer>().Parts.ForEach(part =>
+        GetComponent<Tetrion>().Parts.ForEach(part =>
         {
             _parts.Add(part.GetComponent<PartRotator>());
         });

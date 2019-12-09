@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PawnControler : MonoBehaviour
 {
-    TetrionInitializer pawn;
-    TetrisMover pawnMover;
+    Tetrion pawn;
+    PawnMover pawnMover;
     PawnRotator pawnRotator;
-    public TetrionInitializer Pawn
+    public Tetrion Pawn
     {
         get
         {
@@ -18,7 +18,7 @@ public class PawnControler : MonoBehaviour
         {
             if (value!=null)
             {
-                pawnMover = value.GetComponent<TetrisMover>();
+                pawnMover = value.GetComponent<PawnMover>();
                 pawnRotator = value.GetComponent<PawnRotator>();
             }
             pawn = value;

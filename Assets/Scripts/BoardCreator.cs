@@ -43,8 +43,6 @@ public class BoardCreator : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     private void OnDrawGizmos()

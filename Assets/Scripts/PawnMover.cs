@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TetrisMover : MonoBehaviour
+public class PawnMover : MonoBehaviour
 {
     List<PartMover> _parts;
     // Start is called before the first frame update
     void Start()
     {
         _parts = new List<PartMover>();
-        GetComponent<TetrionInitializer>().Parts.ForEach(part => { _parts.Add(part.GetComponent<PartMover>()); });
+        GetComponent<Tetrion>().Parts.ForEach(part => { _parts.Add(part.GetComponent<PartMover>()); });
     }
 
     public void MoveLeft()
@@ -26,7 +26,6 @@ public class TetrisMover : MonoBehaviour
         {
             part.MoveLeft();
         }
-        transform.Translate(Vector3.left);
     }
     public void MoveRight()
     {
@@ -38,12 +37,11 @@ public class TetrisMover : MonoBehaviour
                 return;
             }
         }
+
         foreach (var part in _parts)
         {
             part.MoveRight();
         }
-        transform.Translate(Vector3.right);
-
     }
     public void MoveForward()
     {
@@ -57,13 +55,10 @@ public class TetrisMover : MonoBehaviour
             }
         }
 
-
         foreach (var part in _parts)
         {
             part.MoveForward();
         }
-        transform.Translate(Vector3.forward);
-
     }
     public void MoveBackward()
     {
@@ -76,14 +71,10 @@ public class TetrisMover : MonoBehaviour
                 return;
             }
         }
-
-
         foreach (var part in _parts)
         {
             part.MoveBackward();
         }
-        transform.Translate(Vector3.back);
-
     }
     private void Collided()
     {
@@ -101,12 +92,9 @@ public class TetrisMover : MonoBehaviour
                 return;
             }
         }
-
-
         foreach (var part in _parts)
         {
             part.Fall();
         }
-        transform.Translate(Vector3.down);
     }
 }
