@@ -19,7 +19,8 @@ public class FillLayer : MonoBehaviour
             var layer = FindObjectOfType<BoardCreator>().SocketLayers[0];
             foreach(var socket in layer)
             {
-                socket.TetrisPart = Instantiate(part,socket.SocketPos,Quaternion.identity,testContainer);
+                if(socket.TetrisPart==null)
+                    socket.TetrisPart = Instantiate(part,socket.SocketPos,Quaternion.identity,testContainer);
             }
         }
     }
