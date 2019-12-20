@@ -26,6 +26,7 @@ public class PawnMover : MonoBehaviour
         {
             part.MoveLeft();
         }
+        transform.Translate(Vector3.left);
     }
     public void MoveRight()
     {
@@ -42,6 +43,7 @@ public class PawnMover : MonoBehaviour
         {
             part.MoveRight();
         }
+        transform.Translate(Vector3.right);
     }
     public void MoveForward()
     {
@@ -59,6 +61,7 @@ public class PawnMover : MonoBehaviour
         {
             part.MoveForward();
         }
+        transform.Translate(Vector3.forward);
     }
     public void MoveBackward()
     {
@@ -75,6 +78,7 @@ public class PawnMover : MonoBehaviour
         {
             part.MoveBackward();
         }
+        transform.Translate(Vector3.back);
     }
     private void Collided()
     {
@@ -96,5 +100,6 @@ public class PawnMover : MonoBehaviour
         {
             part.Fall();
         }
+        transform.Translate(Vector3.down);
     }
 }
