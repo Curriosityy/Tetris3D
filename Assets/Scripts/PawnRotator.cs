@@ -48,10 +48,11 @@ public class PawnRotator : MonoBehaviour
         List<Vector3> newLocalPositions = new List<Vector3>();
         Vector3 temp;
         Vector3Int newArrayPos;
+        Socket rootSocket = _rootPart.CurrentSocket;
         foreach (var part in _parts)
         {
             temp = part.RotateVertically(rotationValue);
-            if (!part.IsRotationPosible(temp, _rootPart.CurrentSocket))
+            if (!part.IsRotationPosible(temp, rootSocket))
             {
                 Debug.Log("cannot rotate");
                 return;
@@ -62,8 +63,10 @@ public class PawnRotator : MonoBehaviour
         foreach (var part in _parts)
         {
             part.GetComponent<Part>().CurrentSocket.TetrisPart = null;
-            newArrayPos = part.GetNewPositionInArray(newLocalPositions[i], _rootPart.CurrentSocket);
+            part.GetComponent<Part>().CurrentSocket = null;
+            newArrayPos = part.GetNewPositionInArray(newLocalPositions[i], rootSocket);
             _layers[newArrayPos.y][newArrayPos.x, newArrayPos.z].TetrisPart = part.gameObject;
+            part.GetComponent<Part>().CurrentSocket = _layers[newArrayPos.y][newArrayPos.x, newArrayPos.z];
             part.transform.localPosition = newLocalPositions[i];
             i++;
         }
@@ -73,10 +76,11 @@ public class PawnRotator : MonoBehaviour
         List<Vector3> newLocalPositions = new List<Vector3>();
         Vector3 temp;
         Vector3Int newArrayPos;
+        Socket rootSocket = _rootPart.CurrentSocket;
         foreach (var part in _parts)
         {
             temp = part.RotateHorizontally(rotationValue);
-            if (!part.IsRotationPosible(temp, _rootPart.CurrentSocket))
+            if (!part.IsRotationPosible(temp, rootSocket))
             {
                 Debug.Log("cannot rotate");
                 return;
@@ -87,8 +91,11 @@ public class PawnRotator : MonoBehaviour
         foreach (var part in _parts)
         {
             part.GetComponent<Part>().CurrentSocket.TetrisPart = null;
-            newArrayPos = part.GetNewPositionInArray(newLocalPositions[i], _rootPart.CurrentSocket);
+            part.GetComponent<Part>().CurrentSocket = null;
+            newArrayPos = part.GetNewPositionInArray(newLocalPositions[i], rootSocket);
+
             _layers[newArrayPos.y][newArrayPos.x, newArrayPos.z].TetrisPart = part.gameObject;
+            part.GetComponent<Part>().CurrentSocket = _layers[newArrayPos.y][newArrayPos.x, newArrayPos.z];
             part.transform.localPosition = newLocalPositions[i];
             i++;
         }
