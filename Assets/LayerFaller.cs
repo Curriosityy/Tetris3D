@@ -27,7 +27,9 @@ public class LayerFaller : MonoBehaviour
                 if(socket.TetrisPart!=null)
                 {
                     int a = 0;
+                    socket.TetrisPart.transform.Translate(Vector3.down);
                     socket.TetrisPart.GetComponent<PartMover>().Fall();
+
                 }
             }
         }

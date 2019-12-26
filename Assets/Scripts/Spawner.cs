@@ -32,8 +32,7 @@ public class Spawner : MonoBehaviour
         if (_pool != null)
         {
             Tetrion pawn = _pool.GetFromPool();
-            //Tetrimino randomTet = _tetriminos[Random.Range(0, _tetriminos.Count)];
-            Tetrimino randomTet = _tetriminos[1];
+            Tetrimino randomTet = _tetriminos[Random.Range(0, _tetriminos.Count)];
             pawn.Initialize(randomTet.Pos);
             SettingUpInGraph(randomTet, pawn);
             pawn.transform.position = transform.position;
