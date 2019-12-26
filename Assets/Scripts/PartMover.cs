@@ -43,27 +43,27 @@ public class PartMover : MonoBehaviour
         _partInfo.CurrentSocket = direction;
     }
 
-    public bool IsCanFall()
+    public bool CanItFall()
     {
-        return IsCanMove(_partInfo.CurrentSocket.Under);
+        return CanItMove(_partInfo.CurrentSocket.Under);
     }
-    public bool IsCanMoveLeft()
+    public bool CanItMoveLeft()
     {
-        return IsCanMove(_partInfo.CurrentSocket.Left);
+        return CanItMove(_partInfo.CurrentSocket.Left);
     }
-    public bool IsCanMoveRight()
+    public bool CanItMoveRight()
     {
-        return IsCanMove(_partInfo.CurrentSocket.Right);
+        return CanItMove(_partInfo.CurrentSocket.Right);
     }
-    public bool IsCanMoveBackward()
+    public bool CanItMoveBackward()
     {
-        return IsCanMove(_partInfo.CurrentSocket.Backward);
+        return CanItMove(_partInfo.CurrentSocket.Backward);
     }
-    public bool IsCanMoveForward()
+    public bool CanItMoveForward()
     {
-        return IsCanMove(_partInfo.CurrentSocket.Forward);
+        return CanItMove(_partInfo.CurrentSocket.Forward);
     }
-    private bool IsCanMove(Socket dicertion)
+    public bool CanItMove(Socket dicertion)
     {
         if (dicertion == null)
         {
