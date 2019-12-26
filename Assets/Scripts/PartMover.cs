@@ -41,6 +41,7 @@ public class PartMover : MonoBehaviour
         }
         direction.TetrisPart = gameObject;
         _partInfo.CurrentSocket = direction;
+
     }
 
     public bool CanItFall()

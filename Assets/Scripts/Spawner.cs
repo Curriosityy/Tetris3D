@@ -36,6 +36,7 @@ public class Spawner : MonoBehaviour
             pawn.Initialize(randomTet.Pos);
             SettingUpInGraph(randomTet, pawn);
             pawn.transform.position = transform.position;
+            pawn.GetComponent<PawnShadow>().EnableShadow();
             bm.GetComponent<Animator>().SetTrigger("Spawned");
             return pawn;
         }

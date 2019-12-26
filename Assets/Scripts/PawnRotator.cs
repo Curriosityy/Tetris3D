@@ -70,6 +70,7 @@ public class PawnRotator : MonoBehaviour
             part.transform.localPosition = newLocalPositions[i];
             i++;
         }
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
     private void RotateHorizontally(Vector2 rotationValue)
     {
@@ -99,6 +100,7 @@ public class PawnRotator : MonoBehaviour
             part.transform.localPosition = newLocalPositions[i];
             i++;
         }
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
 
 }

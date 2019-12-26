@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tetrion : MonoBehaviour
 {
     [SerializeField] List<GameObject> _parts;
-
     bool _isInitialized = false;
     PawnPooler _pool;
     bool _collided = false;

@@ -16,7 +16,7 @@ public class PawnMover : MonoBehaviour
     {
         foreach (var part in _parts)
         {
-            if (!part.IsCanMoveLeft())
+            if (!part.CanItMoveLeft())
             {
                 return;
             }
@@ -27,13 +27,14 @@ public class PawnMover : MonoBehaviour
             part.MoveLeft();
         }
         transform.Translate(Vector3.left);
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
     public void MoveRight()
     {
 
         foreach (var part in _parts)
         {
-            if (!part.IsCanMoveRight())
+            if (!part.CanItMoveRight())
             {
                 return;
             }
@@ -44,13 +45,14 @@ public class PawnMover : MonoBehaviour
             part.MoveRight();
         }
         transform.Translate(Vector3.right);
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
     public void MoveForward()
     {
 
         foreach (var part in _parts)
         {
-            if (!part.IsCanMoveForward())
+            if (!part.CanItMoveForward())
             {
 
                 return;
@@ -62,13 +64,14 @@ public class PawnMover : MonoBehaviour
             part.MoveForward();
         }
         transform.Translate(Vector3.forward);
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
     public void MoveBackward()
     {
 
         foreach (var part in _parts)
         {
-            if (!part.IsCanMoveBackward())
+            if (!part.CanItMoveBackward())
             {
 
                 return;
@@ -79,18 +82,20 @@ public class PawnMover : MonoBehaviour
             part.MoveBackward();
         }
         transform.Translate(Vector3.back);
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
     private void Collided()
     {
         PawnControler pc = FindObjectOfType<PawnControler>();
         FindObjectOfType<BattleManager>().GetComponent<Animator>().SetTrigger("Collided");
+        GetComponent<PawnShadow>().DisableShadow();
     }
     public void Fall()
     {
 
         foreach (var part in _parts)
         {
-            if (!part.IsCanFall())
+            if (!part.CanItFall())
             {
                 Collided();
                 return;
@@ -101,5 +106,6 @@ public class PawnMover : MonoBehaviour
             part.Fall();
         }
         transform.Translate(Vector3.down);
+        GetComponent<PawnShadow>().SetShadowPosition();
     }
 }
