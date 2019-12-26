@@ -30,15 +30,23 @@ public class PawnDespawner : MonoBehaviour,IObserver
 
     public void UpdateObserver()
     {
-        if(++counter==4)
+        Debug.Log(counter);
+        if (++counter==4)
         {
+            
             PawnPooler pp = PawnPooler.Instance;
             if(pp!=null)
             {
+                StartCoroutine("DisableOnNextFrame");
                 PawnPooler.Instance.AddToPool(GetComponent<Tetrion>());
-                gameObject.SetActive(false);
             }
 
         }
+    }
+    IEnumerator DisableOnNextFrame()
+    {
+        yield return new WaitForEndOfFrame();
+
+        gameObject.SetActive(false);
     }
 }
